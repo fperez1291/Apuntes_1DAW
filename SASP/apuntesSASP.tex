@@ -1,0 +1,102 @@
+% ============================================================================
+% Documento: Apuntes de Sostenibilidad Aplicada al Sistema Productivo
+% Autor: Francisco IndexOutOfBounds
+% Curso: 2025/2026
+% ============================================================================
+
+\documentclass[11pt,titlepage]{book}
+
+% Paquetes para matemáticas y símbolos
+\usepackage{amsmath,amssymb,amsfonts,latexsym}
+% Codificación de caracteres UTF-8
+\usepackage[utf8]{inputenc}
+% Soporte multiidioma (español e inglés)
+\usepackage[english,spanish,es-tabla]{babel}
+% Soporte para gráficos e imágenes
+\usepackage{graphicx}
+% Paquete para hipervínculos
+\usepackage{hyperref}
+% Configuración de hipervínculos
+\hypersetup{
+    colorlinks=true,       % Habilitar colores en los enlaces
+    linkcolor=blue,        % Color de enlaces internos
+    filecolor=magenta,     % Color de enlaces a archivos
+    urlcolor=cyan,         % Color de URLs
+    pdftitle={Sostenibilidad Aplicada al Sistema Productivo}, % Título del PDF
+    pdfpagemode=FullScreen, % Mostrar en pantalla completa
+}
+\urlstyle{same} % Estilo de URL igual al texto normal
+
+% Configuración de márgenes de página
+\usepackage{geometry}
+\geometry{a4paper, left=30mm, right=25mm, top=30mm, bottom=30mm}
+
+% Paquete para encabezados y pies de página personalizados
+\usepackage{fancyhdr}
+
+% Paquete para estilos de capítulos personalizados
+\usepackage[Bjornstrup]{fncychap}
+
+% Paquete para formatear títulos de secciones
+\usepackage{titlesec}
+
+% ============================================================================
+% CONFIGURACIÓN DE ESTILOS
+% ============================================================================
+
+% Eliminar indentación de párrafos
+\setlength{\parindent}{0pt}
+
+% Formato de partes (trimestres)
+\titleformat{\part}[frame]{\normalfont}{\filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace}{8pt}{\Large\bfseries\filcenter}
+
+% Formato de secciones
+\titleformat{\section}[block]{\normalfont\bfseries}{\fbox{\thesection}}{1em}{}{}
+
+% Formato de subsecciones
+\titleformat{\subsection}[hang]{\bf\large}{\thesubsection.}{1 em}{}
+
+% ============================================================================
+% INICIO DEL DOCUMENTO
+% ============================================================================
+
+\begin{document}
+
+% Página de título personalizada
+\begin{titlepage}
+  \centering
+  {\LARGE \textsc{Apuntes}\par}
+  \vspace{1em}
+  {\huge\bfseries Sostenibilidad Aplicada al Sistema Productivo\par}
+  \vfill
+  \includegraphics[width=\textwidth]{img/portada.jpg}
+  \vfill
+
+  {\Large Francisco IndexOutOfBounds\par}
+  \vspace{0.5em}
+  \textsc{Curso 2025/2026}
+\end{titlepage}
+
+% Índice de contenidos
+\tableofcontents
+
+% ============================================================================
+% CONTENIDO PRINCIPAL
+% ============================================================================
+
+% PRIMER TRIMESTRE: Sostenibilidad en el entorno empresarial y profesional
+\part{Sostenibilidad en el entorno empresarial y profesional}
+% Inclusión de unidades del primer trimestre
+\input{units/unit1.tex}
+\input{units/unit2.tex}
+
+% SEGUNDO TRIMESTRE
+\part{}
+% Inclusión de unidades del segundo trimestre
+\input{units/unit3.tex}
+
+% ============================================================================
+% FIN DEL DOCUMENTO
+% ============================================================================
+
+\end{document}
