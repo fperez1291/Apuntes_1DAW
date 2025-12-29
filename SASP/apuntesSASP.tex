@@ -14,7 +14,7 @@
 % Clase: book (documento tipo libro)
 % - 11pt: Tamaño de fuente base (11 puntos)
 % - titlepage: Crea una página de título personalizada
-\documentclass[11pt,titlepage]{book}
+\documentclass[11pt,titlepage,twoside]{book}
 
 % ============================================================================
 % PAQUETES MATEMÁTICOS Y SÍMBOLOS
@@ -41,6 +41,7 @@
 % Proporciona comandos como \includegraphics para insertar imágenes con control
 % sobre el tamaño, rotación y otros parámetros visuales
 \usepackage{graphicx}
+\usepackage{xcolor}
 
 % lipsum: Paquete para generar texto de prueba (Lorem Ipsum)
 % Útil para rellenar documentos durante el diseño y maquetación
@@ -73,7 +74,13 @@
 % - a4paper: Tamaño de papel A4 (210x297 mm)
 % - left=30mm, right=25mm: Márgenes laterales
 % - top=30mm, bottom=30mm: Márgenes superior e inferior
-\geometry{a4paper, left=30mm, right=25mm, top=30mm, bottom=30mm}
+\geometry{
+  a4paper,
+  left=20mm,
+  right=20mm,
+  top=30mm,
+  bottom=25mm
+}
 
 % ============================================================================
 % ENCABEZADOS Y PIES DE PÁGINA
@@ -81,6 +88,15 @@
 % fancyhdr: Permite personalizar encabezados y pies de página
 % fancybox: Proporciona cajas decorativas y marcos para texto
 \usepackage{fancyhdr}
+% Configuración de encabezados y pies de página:
+\fancyhf{} % Limpiar encabezados y pies predeterminados
+\lhead[\thepage]{Apuntes}
+\rhead[Sostenibilidad Aplicada al Sistema Productivo]{\thepage}
+
+\pagestyle{fancy}
+
+\usepackage{emptypage}
+
 \usepackage{fancybox}
 
 % ============================================================================
@@ -196,6 +212,8 @@
 
 \begin{document}
 
+\setlength{\headheight}{15pt}
+
 % ============================================================================
 % PÁGINA DE TÍTULO PERSONALIZADA
 % ============================================================================
@@ -207,15 +225,15 @@
 \begin{titlepage}
   % Centra el contenido horizontalmente
   \centering
-  
+
   % Título pequeño
   {\LARGE \textsc{Apuntes}\par}
   \vspace{1em}
-  
+
   % Título principal en negrita
   {\huge\bfseries Sostenibilidad Aplicada al Sistema Productivo\par}
   \vfill
-  
+
   % Imagen de portada escalada al ancho total de la página
   \includegraphics[width=\textwidth]{img/portada.jpg}
   \vfill
@@ -225,6 +243,7 @@
   \vspace{0.5em}
   \textsc{Curso 2025/2026}
 \end{titlepage}
+
 
 % ============================================================================
 % TABLA DE CONTENIDOS
@@ -245,7 +264,7 @@
 % Define la primera parte del documento
 % El contenido será numerado automáticamente como "TRIMESTRE 1"
 \cleardoublepage
-\part{Sostenibilidad en el entorno empresarial y profesional}
+\part[Trimestre 1]{Sostenibilidad en el entorno empresarial y profesional}
 
 % Inclusión de archivos LaTeX externos:
 % \input{ruta/archivo.tex} inserta el contenido del archivo en esta posición
@@ -258,7 +277,7 @@
 % \cleardoublepage: Asegura que la parte comience en una página nueva
 % y sincroniza correctamente la referencia en la tabla de contenidos
 \cleardoublepage
-\part{}
+\part[Trimestre 2]{}
 
 % Inclusión de la unidad 3 (segundo trimestre)
 \input{units/unit3.tex}
