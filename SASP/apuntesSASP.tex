@@ -37,8 +37,15 @@
 % ============================================================================
 % GRÁFICOS E IMÁGENES
 % ============================================================================
-% Paquete para incrustar imágenes en formato JPG, PNG, PDF, etc.
+% graphicx: Paquete para incrustar y manipular imágenes en formato JPG, PNG, PDF
+% Proporciona comandos como \includegraphics para insertar imágenes con control
+% sobre el tamaño, rotación y otros parámetros visuales
 \usepackage{graphicx}
+
+% lipsum: Paquete para generar texto de prueba (Lorem Ipsum)
+% Útil para rellenar documentos durante el diseño y maquetación
+% Se usa generalmente con \lipsum[1-3] para insertar párrafos de ejemplo
+\usepackage{lipsum}
 
 % ============================================================================
 % HIPERVÍNCULOS Y REFERENCIAS
@@ -91,47 +98,96 @@
 % CONFIGURACIÓN DE ESTILOS Y FORMATEO
 % ============================================================================
 
+% INDENTACIÓN DE PÁRRAFOS
+% ============================================================================
 % Eliminar indentación automática de párrafos (primera línea)
-% Cuando \parindent=0pt, los párrafos comienzan sin espaciado a la izquierda
+% Por defecto, LaTeX indenta la primera línea de cada párrafo
+% Establecer \parindent=0pt elimina esta indentación en todo el documento
+% Los párrafos se separan únicamente por espaciado vertical (\vspace)
 \setlength{\parindent}{0pt}
 
 % ============================================================================
 % FORMATO DE PARTES (TRIMESTRES)
 % ============================================================================
-% Define el aspecto visual de los títulos de partes (trimestres del curso)
-% [frame]: Encierra el título en un recuadro
-% \filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace:
-%   - \filright: Alinea a la derecha
-%   - \footnotesize: Tamaño de fuente pequeño
-%   - \bfseries: Texto en negrita
-%   - "TRIMESTRE X": Prefijo del número de parte
-\titleformat{\part}[frame]{\normalfont}{\filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace}{8pt}{\Large\bfseries\filcenter}
+% Las partes representan los trimestres del curso académico
+% Define el aspecto visual de los títulos de partes
+%
+% SINTAXIS: \titleformat{nivel}[forma]{formato}{etiqueta}{espacio}{código_antes}[código_después]
+%
+% Parámetros de configuración:
+% - nivel: \part (nivel jerárquico a personalizar)
+% - [frame]: Encierra el título en un recuadro decorativo
+% - \normalfont: Fuente normal (sin variaciones de estilo previas)
+% - \filleft\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace: 
+%   * \filleft: Alinea el contenido a la izquierda dentro del espacio disponible
+%   * \footnotesize: Tamaño de fuente pequeño para la palabra "TRIMESTRE"
+%   * \bfseries: Texto en negrita
+%   * \thepart: Número de la parte (1, 2, 3, etc.)
+% - 8pt: Espacio entre la etiqueta y el título principal
+% - \Large\bfseries\filcenter: Título principal en grande, negrita y centrado
+\titleformat{\part}[frame]{\normalfont}{\filleft\footnotesize\enspace\bfseries TRIMESTRE \arabic{part}\enspace}{8pt}{\Large\bfseries\filcenter}[]
 
 % ============================================================================
 % FORMATO DE SECCIONES (UNIDADES DENTRO DE PARTES)
 % ============================================================================
-% Cambia la numeración de secciones a números simples (1, 2, 3...) 
-% en lugar de la numeración jerárquica (1.1, 1.2...)
+% Las secciones representan las unidades temáticas dentro de cada trimestre
+% Se numeran de forma independiente en todo el documento (1, 2, 3...)
+% en lugar de la numeración jerárquica (1.1, 1.2, 2.1, etc.)
+%
+% Cambio de numeración:
 \renewcommand{\thesection}{\arabic{section}}
-% Formato personalizado:
-% [block]: Título en bloque (ocupando todo el ancho)
-% {\doublebox{\thesection}}: Número de sección con doble recuadro
-% .5em: Espacio entre número y título
+% \arabic{section}: Muestra solo números ordinales sin la parte anidada
+%
+% Personalización del formato de títulos de sección:
+% - [block]: El título ocupa todo el ancho disponible en bloque
+% - \normalfont\bfseries: Fuente normal en negrita
+% - {\doublebox{\thesection}}: Número de sección dentro de un doble recuadro
+% - .5em: Espacio entre el número recuadrado y el título del texto
+% - []: Código ejecutado después del título (en este caso, vacío)
+% - [\titlerule\vspace*{4pt}]: Dibuja una línea horizontal bajo el título con 4pt de espacio
 \titleformat{\section}[block]{\normalfont\bfseries}{\doublebox{\thesection}}{.5em}{}[\titlerule\vspace*{4pt}]
 
 % ============================================================================
 % FORMATO DE SUBSECCIONES Y SUBSUBSECCIONES
 % ============================================================================
-% Subsecciones: Alineadas a la derecha con formato en negrita y grande
-% [hang]: El título cuelga bajo el número (no en la misma línea)
+% Subsecciones: Temas secundarios dentro de las unidades (secciones)
+% Formato personalizado con alineación y estilos específicos:
+% - [hang]: El título cuelga bajo el número (el número está solo en la primera línea)
+% - \bf\large\raggedright: Texto en negrita, tamaño grande, alineado a la derecha
+% - {\filleft\thesubsection.}: Número de subsección alineado a la izquierda con punto
+% - .5em: Espacio entre número y título
+%
+% NOTA: \raggedright y \filleft son en este contexto complementarios:
+% - \filleft: Llena el espacio antes (alinea el número a la izquierda)
+% - \raggedright: El título cuelga a la derecha después del espacio
 \titleformat{\subsection}[hang]{\bf\large\raggedright}{\filleft\thesubsection.}{.5em}{}
 
-% Subsubsecciones: Alineadas a la izquierda con formato similar
+% Subsubsecciones: Subdivisiones de las subsecciones (nivel 4 de profundidad)
+% Formato similar al de subsecciones pero alineadas a la izquierda:
+% - [hang]: Estructura colgante igual que subsecciones
+% - \bf\large\raggedleft: Negrita, grande, alineado a la izquierda
+% - {\thesubsubsection}: Número sin punto adicional
+% - 0em: Sin espacio entre número y título (pegado inmediatamente)
 \titleformat{\subsubsection}[hang]{\bf\large\raggedleft}{\thesubsubsection}{0em}{}
 
 % ============================================================================
-% INICIO DEL DOCUMENTO
+% CORRECCIÓN DE REFERENCIAS DE PÁGINA PARA PARTES
 % ============================================================================
+% Problema: La tabla de contenidos puede referenciar una página diferente a donde
+% realmente aparece el título de \part, especialmente con saltos de página complejos.
+%
+% Solución: Redefinir el comando \@endpart para usar \cleardoublepage
+% que sincroniza correctamente las referencias de página con el contenido.
+% \cleardoublepage asegura:
+% - Salto a página nueva
+% - Sincronización correcta de referencias de página
+% - Comportamiento apropiado en documentos de dos caras
+\makeatletter
+\renewcommand{\@endpart}{%
+    \vfil\null
+    \cleardoublepage
+}
+\makeatother
 
 % ============================================================================
 % INICIO DEL DOCUMENTO PRINCIPAL
@@ -184,8 +240,11 @@
 
 % PRIMER TRIMESTRE: SOSTENIBILIDAD EN EL ENTORNO EMPRESARIAL Y PROFESIONAL
 % ============================================================================
+% \cleardoublepage: Asegura que la parte comience en una página nueva
+% y sincroniza correctamente la referencia en la tabla de contenidos
 % Define la primera parte del documento
 % El contenido será numerado automáticamente como "TRIMESTRE 1"
+\cleardoublepage
 \part{Sostenibilidad en el entorno empresarial y profesional}
 
 % Inclusión de archivos LaTeX externos:
@@ -196,6 +255,9 @@
 
 % SEGUNDO TRIMESTRE
 % ============================================================================
+% \cleardoublepage: Asegura que la parte comience en una página nueva
+% y sincroniza correctamente la referencia en la tabla de contenidos
+\cleardoublepage
 \part{}
 
 % Inclusión de la unidad 3 (segundo trimestre)
