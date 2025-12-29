@@ -1,102 +1,204 @@
 % ============================================================================
-% Documento: Apuntes de Sostenibilidad Aplicada al Sistema Productivo
-% Autor: Francisco IndexOutOfBounds
-% Curso: 2025/2026
+% DOCUMENTO: APUNTES DE SOSTENIBILIDAD APLICADA AL SISTEMA PRODUCTIVO
+% ============================================================================
+% Descripción: Apuntes académicos estructurados en partes, unidades y secciones
+%              sobre sostenibilidad en entornos empresariales y profesionales
+% Autor:       Francisco IndexOutOfBounds
+% Curso:       2025/2026
+% Versión:     1.0
 % ============================================================================
 
+% ============================================================================
+% CONFIGURACIÓN DEL DOCUMENTO
+% ============================================================================
+% Clase: book (documento tipo libro)
+% - 11pt: Tamaño de fuente base (11 puntos)
+% - titlepage: Crea una página de título personalizada
 \documentclass[11pt,titlepage]{book}
 
-% Paquetes para matemáticas y símbolos
+% ============================================================================
+% PAQUETES MATEMÁTICOS Y SÍMBOLOS
+% ============================================================================
+% amsmath: Entornos mejorados para ecuaciones matemáticas
+% amssymb: Símbolos matemáticos adicionales (American Mathematical Society)
+% amsfonts: Fuentes matemáticas especiales
+% latexsym: Símbolos LaTeX adicionales
 \usepackage{amsmath,amssymb,amsfonts,latexsym}
-% Codificación de caracteres UTF-8
-\usepackage[utf8]{inputenc}
-% Soporte multiidioma (español e inglés)
-\usepackage[english,spanish,es-tabla]{babel}
-% Soporte para gráficos e imágenes
-\usepackage{graphicx}
-% Paquete para hipervínculos
-\usepackage{hyperref}
-% Configuración de hipervínculos
-\hypersetup{
-    colorlinks=true,       % Habilitar colores en los enlaces
-    linkcolor=blue,        % Color de enlaces internos
-    filecolor=magenta,     % Color de enlaces a archivos
-    urlcolor=cyan,         % Color de URLs
-    pdftitle={Sostenibilidad Aplicada al Sistema Productivo}, % Título del PDF
-    pdfpagemode=FullScreen, % Mostrar en pantalla completa
-}
-\urlstyle{same} % Estilo de URL igual al texto normal
 
-% Configuración de márgenes de página
+% ============================================================================
+% CODIFICACIÓN Y MULTIIDIOMA
+% ============================================================================
+% Codificación UTF-8: Permite usar caracteres acentuados y especiales directamente
+\usepackage[utf8]{inputenc}
+% Soporte para español e inglés: Define reglas de idiomas para separación de sílabas
+% y formato de texto según el idioma
+\usepackage[english,spanish,es-tabla]{babel}
+
+% ============================================================================
+% GRÁFICOS E IMÁGENES
+% ============================================================================
+% Paquete para incrustar imágenes en formato JPG, PNG, PDF, etc.
+\usepackage{graphicx}
+
+% ============================================================================
+% HIPERVÍNCULOS Y REFERENCIAS
+% ============================================================================
+% Habilita hipervínculos interactivos en el documento PDF
+\usepackage{hyperref}
+% Configuración personalizada de hipervínculos:
+\hypersetup{
+    colorlinks=true,       % Activar colores en enlaces (en lugar de cajas)
+    linkcolor=blue,        % Color azul para referencias internas (\ref, \cite)
+    filecolor=magenta,     % Color magenta para enlaces a archivos externos
+    urlcolor=cyan,         % Color cian para URLs web
+    pdftitle={Sostenibilidad Aplicada al Sistema Productivo}, % Metadato: título PDF
+    pdfpagemode=FullScreen, % Mostrar el PDF en modo pantalla completa al abrirlo
+}
+% Usar el mismo estilo de fuente para URLs que el resto del texto
+\urlstyle{same}
+
+% ============================================================================
+% CONFIGURACIÓN DE MÁRGENES Y LAYOUT
+% ============================================================================
+% Paquete geometry: Control preciso de dimensiones y márgenes de página
 \usepackage{geometry}
+% Configuración:
+% - a4paper: Tamaño de papel A4 (210x297 mm)
+% - left=30mm, right=25mm: Márgenes laterales
+% - top=30mm, bottom=30mm: Márgenes superior e inferior
 \geometry{a4paper, left=30mm, right=25mm, top=30mm, bottom=30mm}
 
-% Paquete para encabezados y pies de página personalizados
+% ============================================================================
+% ENCABEZADOS Y PIES DE PÁGINA
+% ============================================================================
+% fancyhdr: Permite personalizar encabezados y pies de página
+% fancybox: Proporciona cajas decorativas y marcos para texto
 \usepackage{fancyhdr}
 \usepackage{fancybox}
 
-% Paquete para estilos de capítulos personalizados
+% ============================================================================
+% ESTILOS DE CAPÍTULOS Y SECCIONES
+% ============================================================================
+% fncychap: Estilos decorativos para títulos de capítulos
+% [Bjornstrup]: Estilo elegante con líneas y formateo especial
 \usepackage[Bjornstrup]{fncychap}
 
-% Paquete para formatear títulos de secciones
+% titlesec: Control avanzado sobre el formato de títulos de secciones
+% y subsecciones (espaciado, color, numeración, etc.)
 \usepackage{titlesec}
 
 % ============================================================================
-% CONFIGURACIÓN DE ESTILOS
+% CONFIGURACIÓN DE ESTILOS Y FORMATEO
 % ============================================================================
 
-% Eliminar indentación de párrafos
+% Eliminar indentación automática de párrafos (primera línea)
+% Cuando \parindent=0pt, los párrafos comienzan sin espaciado a la izquierda
 \setlength{\parindent}{0pt}
 
-% Formato de partes (trimestres)
+% ============================================================================
+% FORMATO DE PARTES (TRIMESTRES)
+% ============================================================================
+% Define el aspecto visual de los títulos de partes (trimestres del curso)
+% [frame]: Encierra el título en un recuadro
+% \filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace:
+%   - \filright: Alinea a la derecha
+%   - \footnotesize: Tamaño de fuente pequeño
+%   - \bfseries: Texto en negrita
+%   - "TRIMESTRE X": Prefijo del número de parte
 \titleformat{\part}[frame]{\normalfont}{\filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace}{8pt}{\Large\bfseries\filcenter}
 
-% Formato de secciones
+% ============================================================================
+% FORMATO DE SECCIONES (UNIDADES DENTRO DE PARTES)
+% ============================================================================
+% Cambia la numeración de secciones a números simples (1, 2, 3...) 
+% en lugar de la numeración jerárquica (1.1, 1.2...)
 \renewcommand{\thesection}{\arabic{section}}
+% Formato personalizado:
+% [block]: Título en bloque (ocupando todo el ancho)
+% {\doublebox{\thesection}}: Número de sección con doble recuadro
+% .5em: Espacio entre número y título
 \titleformat{\section}[block]{\normalfont\bfseries}{\doublebox{\thesection}}{.5em}{}[\titlerule\vspace*{4pt}]
 
-% Formato de subsecciones
-\titleformat{\subsection}[hang]{\bf\large}{\filleft\thesubsection.}{1 em}{}
+% ============================================================================
+% FORMATO DE SUBSECCIONES Y SUBSUBSECCIONES
+% ============================================================================
+% Subsecciones: Alineadas a la derecha con formato en negrita y grande
+% [hang]: El título cuelga bajo el número (no en la misma línea)
+\titleformat{\subsection}[hang]{\bf\large\raggedright}{\filleft\thesubsection.}{1 em}{}
 
-\titleformat{\subsubsection}[hang]{\bf\large}{\thesubsection}{0em}{}
+% Subsubsecciones: Alineadas a la izquierda con formato similar
+\titleformat{\subsubsection}[hang]{\bf\large\raggedleft}{\thesubsubsection}{0em}{}
 
 % ============================================================================
 % INICIO DEL DOCUMENTO
 % ============================================================================
 
+% ============================================================================
+% INICIO DEL DOCUMENTO PRINCIPAL
+% ============================================================================
+% Todo el contenido se coloca entre \begin{document} y \end{document}
+
 \begin{document}
 
-% Página de título personalizada
+% ============================================================================
+% PÁGINA DE TÍTULO PERSONALIZADA
+% ============================================================================
+% Crea una portada atractiva con:
+% - Título principal del documento
+% - Imagen de portada (portada.jpg)
+% - Nombre del autor
+% - Información del curso
 \begin{titlepage}
+  % Centra el contenido horizontalmente
   \centering
+  
+  % Título pequeño
   {\LARGE \textsc{Apuntes}\par}
   \vspace{1em}
+  
+  % Título principal en negrita
   {\huge\bfseries Sostenibilidad Aplicada al Sistema Productivo\par}
   \vfill
+  
+  % Imagen de portada escalada al ancho total de la página
   \includegraphics[width=\textwidth]{img/portada.jpg}
   \vfill
 
+  % Información del autor y curso al final
   {\Large Francisco IndexOutOfBounds\par}
   \vspace{0.5em}
   \textsc{Curso 2025/2026}
 \end{titlepage}
 
-% Índice de contenidos
+% ============================================================================
+% TABLA DE CONTENIDOS
+% ============================================================================
+% Genera automáticamente un índice con todos los capítulos, secciones y subsecciones
+% Los números de página se vinculan a las respectivas secciones en el PDF
 \tableofcontents
 
 % ============================================================================
-% CONTENIDO PRINCIPAL
+% CONTENIDO PRINCIPAL DEL DOCUMENTO
 % ============================================================================
+% El contenido se organiza en partes (trimestres) y unidades
 
-% PRIMER TRIMESTRE: Sostenibilidad en el entorno empresarial y profesional
+% PRIMER TRIMESTRE: SOSTENIBILIDAD EN EL ENTORNO EMPRESARIAL Y PROFESIONAL
+% ============================================================================
+% Define la primera parte del documento
+% El contenido será numerado automáticamente como "TRIMESTRE 1"
 \part{Sostenibilidad en el entorno empresarial y profesional}
-% Inclusión de unidades del primer trimestre
+
+% Inclusión de archivos LaTeX externos:
+% \input{ruta/archivo.tex} inserta el contenido del archivo en esta posición
+% Las unidades 1 y 2 corresponden al primer trimestre
 \input{units/unit1.tex}
 \input{units/unit2.tex}
 
 % SEGUNDO TRIMESTRE
+% ============================================================================
 \part{}
-% Inclusión de unidades del segundo trimestre
+
+% Inclusión de la unidad 3 (segundo trimestre)
 \input{units/unit3.tex}
 
 % ============================================================================
