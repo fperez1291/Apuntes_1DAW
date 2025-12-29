@@ -33,6 +33,7 @@
 
 % Paquete para encabezados y pies de página personalizados
 \usepackage{fancyhdr}
+\usepackage{fancybox}
 
 % Paquete para estilos de capítulos personalizados
 \usepackage[Bjornstrup]{fncychap}
@@ -51,10 +52,13 @@
 \titleformat{\part}[frame]{\normalfont}{\filright\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace}{8pt}{\Large\bfseries\filcenter}
 
 % Formato de secciones
-\titleformat{\section}[block]{\normalfont\bfseries}{\fbox{\thesection}}{1em}{}{}
+\renewcommand{\thesection}{\arabic{section}}
+\titleformat{\section}[block]{\normalfont\bfseries}{\doublebox{\thesection}}{.5em}{}[\titlerule\vspace*{4pt}]
 
 % Formato de subsecciones
-\titleformat{\subsection}[hang]{\bf\large}{\thesubsection.}{1 em}{}
+\titleformat{\subsection}[hang]{\bf\large}{\filleft\thesubsection.}{1 em}{}
+
+\titleformat{\subsubsection}[hang]{\bf\large}{\thesubsection}{0em}{}
 
 % ============================================================================
 % INICIO DEL DOCUMENTO
