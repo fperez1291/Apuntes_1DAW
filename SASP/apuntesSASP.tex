@@ -123,27 +123,6 @@
 \setlength{\parindent}{0pt}
 
 % ============================================================================
-% FORMATO DE PARTES (TRIMESTRES)
-% ============================================================================
-% Las partes representan los trimestres del curso académico
-% Define el aspecto visual de los títulos de partes
-%
-% SINTAXIS: \titleformat{nivel}[forma]{formato}{etiqueta}{espacio}{código_antes}[código_después]
-%
-% Parámetros de configuración:
-% - nivel: \part (nivel jerárquico a personalizar)
-% - [frame]: Encierra el título en un recuadro decorativo
-% - \normalfont: Fuente normal (sin variaciones de estilo previas)
-% - \filleft\footnotesize\enspace\bfseries TRIMESTRE \thepart\enspace: 
-%   * \filleft: Alinea el contenido a la izquierda dentro del espacio disponible
-%   * \footnotesize: Tamaño de fuente pequeño para la palabra "TRIMESTRE"
-%   * \bfseries: Texto en negrita
-%   * \thepart: Número de la parte (1, 2, 3, etc.)
-% - 8pt: Espacio entre la etiqueta y el título principal
-% - \Large\bfseries\filcenter: Título principal en grande, negrita y centrado
-\titleformat{\part}[frame]{\normalfont}{\filleft\footnotesize\enspace\bfseries TRIMESTRE \arabic{part}\enspace}{8pt}{\Large\bfseries\filcenter}[]
-
-% ============================================================================
 % FORMATO DE SECCIONES (UNIDADES DENTRO DE PARTES)
 % ============================================================================
 % Las secciones representan las unidades temáticas dentro de cada trimestre
@@ -252,32 +231,11 @@
 % Los números de página se vinculan a las respectivas secciones en el PDF
 \tableofcontents
 
-% ============================================================================
-% CONTENIDO PRINCIPAL DEL DOCUMENTO
-% ============================================================================
-% El contenido se organiza en partes (trimestres) y unidades
-
-% PRIMER TRIMESTRE: SOSTENIBILIDAD EN EL ENTORNO EMPRESARIAL Y PROFESIONAL
-% ============================================================================
-% \cleardoublepage: Asegura que la parte comience en una página nueva
-% y sincroniza correctamente la referencia en la tabla de contenidos
-% Define la primera parte del documento
-% El contenido será numerado automáticamente como "TRIMESTRE 1"
-\cleardoublepage
-\part[Trimestre 1]{Sostenibilidad en el entorno empresarial y profesional}
-
 % Inclusión de archivos LaTeX externos:
 % \input{ruta/archivo.tex} inserta el contenido del archivo en esta posición
 % Las unidades 1 y 2 corresponden al primer trimestre
 \input{units/unit1.tex}
 \input{units/unit2.tex}
-
-% SEGUNDO TRIMESTRE
-% ============================================================================
-% \cleardoublepage: Asegura que la parte comience en una página nueva
-% y sincroniza correctamente la referencia en la tabla de contenidos
-\cleardoublepage
-\part[Trimestre 2]{}
 
 % Inclusión de la unidad 3 (segundo trimestre)
 \input{units/unit3.tex}
